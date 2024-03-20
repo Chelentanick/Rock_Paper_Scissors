@@ -15,6 +15,7 @@ namespace Rock_Paper_Scissors
             name = Console.ReadLine();
             Console.WriteLine("Write your age:");
             age = int.Parse(Console.ReadLine());
+           
             Console.Clear();
 
 

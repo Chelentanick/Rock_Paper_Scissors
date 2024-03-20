@@ -30,7 +30,7 @@ namespace Rock_Paper_Scissors
                 return;
               
             }
-            else if (decision == "yes")
+            else if (decision == "yes" || decision == "yed" || decision == "yea" || decision == "yee" || decision == "yse")
             {
                Battle.StartBattle(ref playerChoice,ref computerChoice, ref playerWins);
             }

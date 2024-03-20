@@ -94,8 +94,17 @@ namespace Rock_Paper_Scissors
                 playerWins++;
 
             }
-            else if (playerScore < aiWins) { }
-                Console.WriteLine("Computer wins the game!");
+            else if (playerScore < aiWins)
+            {
+                Console.WriteLine("Computer wins the game!\n");
+
+                string[] cheer = { "Next game you will win!", " Keep going!", "Don't give up!", "Chin up!" };
+
+                Random random = new Random(); 
+                int index = random.Next(cheer.Length);
+                string randomCheer = cheer[index];
+                Console.WriteLine(randomCheer);
+            }
             else
                 Console.WriteLine("It's a tie game!");
 

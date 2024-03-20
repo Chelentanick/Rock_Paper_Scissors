@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Rock_Paper_Scissors
 {
@@ -14,13 +15,31 @@ namespace Rock_Paper_Scissors
             Console.WriteLine("_________________________________________________________\n");
 
             Console.WriteLine($"| Name: {name} | | Age: {age} | | Rounds: {rounds} | | Wins: {wins} |");
-            Console.WriteLine("_________________________________________________________");
+            Console.WriteLine("_________________________________________________________\n\n");
             
+            
+        }
+        public static void PlayerDecision(string name)
+        {
+            Console.WriteLine("Do you want to start battle ? (yes/no)");
+            string decision = Console.ReadLine();
+            decision.ToLower();
+            if (decision == "no")
+            {
+                Console.WriteLine($"Have a good day,{name} Bye!");
+                return;
+              
+            }
+            else if (decision == "yes")
+            {
+               Battle.StartBattle();
+            }
+            else Console.WriteLine("INVALID VALUE");
         }
         static void Main(string[] args)
 
         {
-            
+           
             string playerName = "";
             int playerAge = 0;
             int playerRounds = 0;
@@ -33,6 +52,7 @@ namespace Rock_Paper_Scissors
             }
                 Stat(playerName, playerAge, playerRounds, playerWins);
 
+            PlayerDecision(playerName);
 
 
 

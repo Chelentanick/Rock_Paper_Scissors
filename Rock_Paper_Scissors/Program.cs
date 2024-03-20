@@ -19,7 +19,7 @@ namespace Rock_Paper_Scissors
             
             
         }
-        public static void PlayerDecision(string name)
+        public static void PlayerDecision(string name, ref int playerChoice, ref WeaponType computerChoice,ref int playerWins)
         {
             Console.WriteLine("Do you want to start battle ? (yes/no)");
             string decision = Console.ReadLine();
@@ -32,32 +32,41 @@ namespace Rock_Paper_Scissors
             }
             else if (decision == "yes")
             {
-               Battle.StartBattle();
+               Battle.StartBattle(ref playerChoice,ref computerChoice, ref playerWins);
             }
             else Console.WriteLine("INVALID VALUE");
         }
         static void Main(string[] args)
 
         {
-           
-            string playerName = "";
-            int playerAge = 0;
-            int playerRounds = 0;
-            int playerWins = 0;   
-            SayHello.SayHelloToPlayer(ref playerName, ref playerAge);
-            if (playerAge <= 12)
-            {
-                Console.WriteLine("This game for older players. Have a nice day!");
-                return;
-            }
+            
+                int playerChoice = 0;
+                WeaponType computerChoice = 0;
+                string playerName = "";
+                int playerAge = 0;
+                int playerRounds = 0;
+                int playerWins = 0;
+                SayHello.SayHelloToPlayer(ref playerName, ref playerAge);
+                if (playerAge <= 12)
+                {
+                    Console.WriteLine("This game for older players. Have a nice day!");
+                    return;
+                }
                 Stat(playerName, playerAge, playerRounds, playerWins);
+            while (true) { 
+                PlayerDecision(playerName, ref playerChoice, ref computerChoice, ref playerWins);
+              
 
-            PlayerDecision(playerName);
+                Console.Clear();
+                playerRounds++;
+                Stat(playerName, playerAge, playerRounds, playerWins);
+                Console.WriteLine("Do You want play again? (yes/no)");
+                string playAgainInput = Console.ReadLine(); 
+
+                if(playAgainInput !="yes") { break; }
 
 
-
-
-
+            }
         }
     }
 }

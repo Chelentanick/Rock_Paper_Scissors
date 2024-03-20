@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,46 +21,85 @@ namespace Rock_Paper_Scissors
             else if (aiWeapon == WeaponType.scissors) Console.WriteLine("░░░░░░░░░░░░░░░░░░░\r\n░░░░░███░░░████░░░░\r\n░░░░█░░░█░█░░░░█░░░\r\n░░░░█░░██░█░░░██░░░\r\n░░░░░██████████░░░░\r\n░░░░░░░░███░░░░░░░░\r\n░░░░░░░████░░░░░░░░\r\n░░░░░░██░██░░░░░░░░\r\n░░░░░░██░██░░░░░░░░\r\n░░░░░░██░██░░░░░░░░\r\n░░░░░██░░██░░░░░░░░\r\n░░░░░█░░░█░░░░░░░░░\r\n░░░░░█░░░█░░░░░░░░░\r\n");
         }
 
-        public static void StartBattle() 
-        { 
-            Console.Clear();
-            Console.WriteLine("                                             CHOOSE YOUR WEAPON!\n");
-            Console.WriteLine("ROCK wins against SCISSORS                 PAPER wins against ROCK                     SCISSORS wins against PAPER\n");
-            Console.WriteLine("Write <ROCK> or <PAPER> or <SCISSORS> ");
+        public static void StartBattle(ref int playerChoice, ref WeaponType computerChoice, ref int playerWins)
+        {
+          int playerScore = 0;
+            int aiWins = 0;
 
-            string playerInput;
-            WeaponType computerChoice;
-            int playerChoice = 0;
-            while (playerChoice == 0)    
+            for (int round = 1; round <= 3; round++)
             {
-                playerInput = Console.ReadLine().ToLower();
+                Console.Clear();
+                Console.WriteLine("                                             CHOOSE YOUR WEAPON!\n");
+                Console.WriteLine("ROCK wins against SCISSORS                 PAPER wins against ROCK                     SCISSORS wins against PAPER\n");
+                Console.WriteLine("Write <ROCK> or <PAPER> or <SCISSORS> ");
+                playerChoice = 0;
+                string playerInput;
 
-                if (playerInput == "rock")
+                while (playerChoice == 0)
                 {
-                    playerChoice = (int)WeaponType.rock;
-                    
+                    playerInput = Console.ReadLine().ToLower();
+
+                    if (playerInput == "rock")
+                    {
+                        playerChoice = (int)WeaponType.rock;
+
+                    }
+
+                    else if (playerInput == "paper")
+                    {
+                        playerChoice = (int)WeaponType.paper;
+
+                    }
+                    else if (playerInput == "scissors")
+                    {
+                        playerChoice = (int)(WeaponType.scissors);
+
+                    }
+
+                    else Console.WriteLine("INVALID VALUE");
+                }
+                Console.Clear();
+
+                Random random = new Random();
+                computerChoice = (WeaponType)random.Next(1, 4);
+                AreaForBattle(playerChoice, computerChoice);
+                if (playerChoice == (int)computerChoice)
+                {
+                    Console.WriteLine("IT`S A TIE!");
+
+                }
+                else if ((playerChoice == 1 && computerChoice == WeaponType.scissors) ||
+                         (playerChoice == 2 && computerChoice == WeaponType.rock) ||
+                         (playerChoice == 3 && computerChoice == WeaponType.paper))
+                {
+                    Console.WriteLine("YOU WIN!");
+
+                    playerScore++;
+
+                }
+                else
+                {
+                    Console.WriteLine("AI WIN!");
+                    aiWins++;
                 }
 
-                else if (playerInput == "paper")
-                {
-                    playerChoice = (int)WeaponType.paper;
-                  
-                }
-                else if (playerInput == "scissors")
-                {
-                    playerChoice = (int)(WeaponType.scissors);
-                   
-                }
 
-                else Console.WriteLine("INVALID VALUE");
+                Console.ReadLine();
             }
             Console.Clear();
-            
-            Random random = new Random();
-            computerChoice = (WeaponType)random.Next(1,4);
-            AreaForBattle(playerChoice, computerChoice);
+            Console.WriteLine("                     \nGAME OVER");
+            if (playerScore > aiWins)
+            {
+                Console.WriteLine("You win the game!");
+                playerWins++;
 
+            }
+            else if (playerScore < aiWins) { }
+                Console.WriteLine("Computer wins the game!");
+            else
+                Console.WriteLine("It's a tie game!");
 
+            Console.ReadLine();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Rock_Paper_Scissors
                 Console.Clear();
                 Console.WriteLine("                                             CHOOSE YOUR WEAPON!\n");
                 Console.WriteLine("ROCK wins against SCISSORS                 PAPER wins against ROCK                     SCISSORS wins against PAPER\n");
-                Console.WriteLine("Write <ROCK> or <PAPER> or <SCISSORS> ");
+                Console.WriteLine("Write <R> for <ROCK> or <P> for <PAPER> or <S> for <SCISSORS> ");
                 playerChoice = 0;
                 string playerInput;
 
@@ -39,18 +39,18 @@ namespace Rock_Paper_Scissors
                 {
                     playerInput = Console.ReadLine().ToLower();
 
-                    if (playerInput == "rock")
+                    if (playerInput == "r")
                     {
                         playerChoice = (int)WeaponType.rock;
 
                     }
 
-                    else if (playerInput == "paper")
+                    else if (playerInput == "p")
                     {
                         playerChoice = (int)WeaponType.paper;
 
                     }
-                    else if (playerInput == "scissors")
+                    else if (playerInput == "s")
                     {
                         playerChoice = (int)(WeaponType.scissors);
 

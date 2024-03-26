@@ -11,13 +11,26 @@ namespace Rock_Paper_Scissors
         public static void SayHelloToPlayer(ref string name, ref int age)
         {
             Console.WriteLine("\r\n███████████████████████████████████████████████████████████████████▀█████████████████████\r\n█▄─█▀▀▀█─▄█▄─▄▄─█▄─▄███─▄▄▄─█─▄▄─█▄─▀█▀─▄█▄─▄▄─███─▄─▄─█─▄▄─███─▄▄▄▄██▀▄─██▄─▀█▀─▄█▄─▄▄─█\r\n██─█─█─█─███─▄█▀██─██▀█─███▀█─██─██─█▄█─███─▄█▀█████─███─██─███─██▄─██─▀─███─█▄█─███─▄█▀█\r\n▀▀▄▄▄▀▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▄▀▄▄▄▀▄▄▄▀▄▄▄▄▄▀▀▀▀▄▄▄▀▀▄▄▄▄▀▀▀▄▄▄▄▄▀▄▄▀▄▄▀▄▄▄▀▄▄▄▀▄▄▄▄▄▀\r\n███████████████████████████████████████████████████████████████████████████████████████████████████████\r\n█▄─▄▄▀█─▄▄─█─▄▄▄─█▄─█─▄███▄─▄▄─██▀▄─██▄─▄▄─█▄─▄▄─█▄─▄▄▀███─▄▄▄▄█─▄▄▄─█▄─▄█─▄▄▄▄█─▄▄▄▄█─▄▄─█▄─▄▄▀█─▄▄▄▄█\r\n██─▄─▄█─██─█─███▀██─▄▀█████─▄▄▄██─▀─███─▄▄▄██─▄█▀██─▄─▄███▄▄▄▄─█─███▀██─██▄▄▄▄─█▄▄▄▄─█─██─██─▄─▄█▄▄▄▄─█\r\n▀▄▄▀▄▄▀▄▄▄▄▀▄▄▄▄▄▀▄▄▀▄▄▀▀▀▄▄▄▀▀▀▄▄▀▄▄▀▄▄▄▀▀▀▄▄▄▄▄▀▄▄▀▄▄▀▀▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▄▀▄▄▀▄▄▀▄▄▄▄▄▀\n\n\n\n");
-            Console.WriteLine("Write your name:");
-            name = Console.ReadLine();
-            Console.WriteLine("Write your age:");
-            age = int.Parse(Console.ReadLine());
-           
-            Console.Clear();
+            do
+            {
+                Console.WriteLine("Write your name:");
 
+                name = Console.ReadLine();
+                Console.WriteLine("Write your age:");
+                string ageString = Console.ReadLine();
+                if (int.TryParse(ageString, out age))
+                {
+                }
+                else Console.WriteLine("INVALID VALUE\n");
+                if (string.IsNullOrWhiteSpace(name) || age == 0)
+                {
+                    Console.WriteLine("INVALID VALUE");
+                    Console.ReadLine();
+                }
+                else break;
+                ;
+                Console.Clear();
+            } while (true);
 
 
         }
